@@ -14,6 +14,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		// plugin hooks
 		$hooks = $this->elgg()->hooks;
 		$hooks->registerHandler('register', 'menu:breadcrumbs', __NAMESPACE__ . '\BreadcrumbsMenu::addOwnerBlockMenu');
+		$hooks->registerHandler('prepare', 'menu:breadcrumbs', __NAMESPACE__ . '\BreadcrumbsMenu::trimBreadcrumbText');
 		
 		$hooks->unregisterHandler('prepare', 'breadcrumbs', 'elgg_prepare_breadcrumbs');
 	}

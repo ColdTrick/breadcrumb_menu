@@ -3,6 +3,7 @@
 namespace ColdTrick\BreadcrumbMenu;
 
 use Elgg\Menu\MenuItems;
+use Elgg\Menu\PreparedMenu;
 
 class BreadcrumbsMenu {
 	
@@ -71,6 +72,29 @@ class BreadcrumbsMenu {
 			$menu_item->setParentName($owner_item->getName());
 			
 			$return[] = $menu_item;
+		}
+		
+		return $return;
+	}
+	
+	/**
+	 * Trim breadcrumb menu items to max length
+	 *
+	 * @param \Elgg\Hook $hook 'prepare', 'menu:breadcrumbs'
+	 *
+	 * @return PreparedMenu
+	 */
+	public static function trimBreadcrumbText(\Elgg\Hook $hook) {
+		
+		/* @var $return PreparedMenu */
+		$return = $hook->getValue();
+		
+		/* @var $menu_section \Elgg\Menu\MenuSection */
+		foreach ($return as $menu_section) {
+			/* @var $menu_item \ElggMenuItem */
+			foreach ($menu_section as $memu_item) {
+				$memu_item->setText(elgg_get_excerpt($memu_item->getText(), 100));
+			}
 		}
 		
 		return $return;

@@ -1,0 +1,21 @@
+{
+	"name": "coldtrick/breadcrumb_menu",
+	"description": "Enchances the breadcrumb menu",
+	"type": "elgg-plugin",
+	"keywords": ["elgg", "plugin", "menu", "navigation"],
+	"license": "GPL-2.0-only",
+	"support": {
+		"source": "https://github.com/ColdTrick/breadcrumb_menu",
+		"issues": "https://github.com/ColdTrick/breadcrumb_menu/issues"
+	},
+	"require": {
+		"composer/installers": "^1.0.8"
+	},
+	"require-dev": {
+		"coldtrick/sniffs": "dev-master",
+		"coldtrick/releases": "dev-master"
+	},
+	"conflict": {
+		"elgg/elgg": "<3.0"
+	}
+}

@@ -107,8 +107,17 @@ class BreadcrumbsMenu {
 		
 		$remove_last_item = false;
 		
-		if (elgg_get_plugin_setting('remove_last_empty_item', 'breadcrumb_menu') === 'yes') {
-			if (elgg_is_empty($last_item->getHref())) {
+		if (!$remove_last_item && elgg_get_plugin_setting('remove_last_empty_item', 'breadcrumb_menu') === 'yes') {
+			if (!$last_item->getChildren() && elgg_is_empty($last_item->getHref())) {
+				$remove_last_item = true;
+			}
+		}
+		
+		if (!$remove_last_item && elgg_get_plugin_setting('remove_last_self_item', 'breadcrumb_menu') === 'yes') {
+			$current_page = current_page_url();
+			$menu_link = $last_item->getHref();
+			
+			if (!$last_item->getChildren() && elgg_http_url_is_identical($current_page, $menu_link)) {
 				$remove_last_item = true;
 			}
 		}

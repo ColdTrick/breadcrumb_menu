@@ -24,3 +24,14 @@ echo elgg_view_field([
 	'checked' => $plugin->remove_last_empty_item === 'yes',
 	'switch' => true,
 ]);
+
+echo elgg_view_field([
+	'#type' => 'checkbox',
+	'#label' => elgg_echo('breadcrumb_menu:settings:remove_last_self_item'),
+	'#help' => elgg_echo('breadcrumb_menu:settings:remove_last_self_item:help'),
+	'name' => 'params[remove_last_self_item]',
+	'value' => 'yes',
+	'default' => 'no',
+	'checked' => $plugin->remove_last_self_item === 'yes',
+	'switch' => true,
+]);

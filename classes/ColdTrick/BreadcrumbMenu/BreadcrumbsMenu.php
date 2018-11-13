@@ -27,6 +27,10 @@ class BreadcrumbsMenu {
 			return;
 		}
 		
+		if (elgg_get_plugin_setting('move_owner_block', 'breadcrumb_menu') === 'no') {
+			return;
+		}
+		
 		$owner_item = false;
 		/* @var $menu_item \ElggMenuItem */
 		foreach ($return as $menu_item) {

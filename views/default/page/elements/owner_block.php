@@ -20,19 +20,24 @@ if (!($owner instanceof ElggGroup || $owner instanceof ElggUser)) {
 	return;
 }
 
+$move_owner_block = elgg_get_plugin_setting('move_owner_block', 'breadcrumb_menu') === 'yes';
+
 elgg_push_context('owner_block');
 
-// $header = elgg_view_entity($owner, [
-// 	'item_view' => 'object/elements/chip',
-// ]);
+$header = '';
+if (!$move_owner_block) {
+	$header = elgg_view_entity($owner, [
+		'item_view' => 'object/elements/chip',
+	]);
+}
 
 $extra_class = '';
 $body = '';
-// if (elgg_extract('show_owner_block_menu', $vars, true)) {
-// 	$body .= elgg_view_menu('owner_block', ['entity' => $owner]);
-// } else {
+if (!$move_owner_block && elgg_extract('show_owner_block_menu', $vars, true)) {
+	$body .= elgg_view_menu('owner_block', ['entity' => $owner]);
+} else {
 	$extra_class = 'elgg-owner-block-empty';
-// }
+}
 
 if (elgg_view_exists('page/elements/owner_block/extend')) {
 	$body .= elgg_view('page/elements/owner_block/extend', $vars);

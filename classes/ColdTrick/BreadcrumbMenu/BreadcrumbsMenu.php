@@ -82,6 +82,49 @@ class BreadcrumbsMenu {
 	}
 	
 	/**
+	 * Potentialy remove the last item from the breadcrumb menu
+	 *
+	 * @param \Elgg\Hook $hook 'prepare', 'menu:breadcrumbs'
+	 *
+	 * @return void|MenuItems
+	 */
+	public static function removeLastItem(\Elgg\Hook $hook) {
+		
+		/* @var $return PreparedMenu */
+		$return = $hook->getValue();
+		if (!$return->count()) {
+			return;
+		}
+		
+		/* @var $items \ElggMenuItem[] */
+		$items = $return->getItems('default');
+		if (empty($items)) {
+			return;
+		}
+		
+		/* @var $last_item \ElggMenuItem */
+		$last_item = end($items);
+		
+		$remove_last_item = false;
+		
+		if (elgg_get_plugin_setting('remove_last_empty_item', 'breadcrumb_menu') === 'yes') {
+			if (elgg_is_empty($last_item->getHref())) {
+				$remove_last_item = true;
+			}
+		}
+		
+		if (!$remove_last_item) {
+			return;
+		}
+		
+		array_pop($items);
+		
+		$return->getSection('default')->fill($items);
+		
+		return $return;
+	}
+	
+	/**
 	 * Trim breadcrumb menu items to max length
 	 *
 	 * @param \Elgg\Hook $hook 'prepare', 'menu:breadcrumbs'

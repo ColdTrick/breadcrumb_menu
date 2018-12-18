@@ -128,7 +128,11 @@ class BreadcrumbsMenu {
 		
 		array_pop($items);
 		
-		$return->getSection('default')->fill($items);
+		if (!empty($items)) {
+			$return->getSection('default')->fill($items);
+		} else {
+			$return->remove('default');
+		}
 		
 		return $return;
 	}

@@ -1,2 +1,11 @@
 Version history
 ===============
+
+1.0 (2019-03-27):
+
+- added: owner_block menu items to breadcrumb
+- added: plugin setting to remove last breadcrumb item with link to self
+- added: remove last empty breadcrumb item if no link
+- added: setting to control if a home item needs to be added
+- changed: moving owner block to breadcrumbs is now a plugin setting
+- fixed: remove breadcrumb section if no more items

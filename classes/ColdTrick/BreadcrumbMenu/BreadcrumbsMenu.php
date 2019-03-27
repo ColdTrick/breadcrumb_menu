@@ -159,4 +159,38 @@ class BreadcrumbsMenu {
 		
 		return $return;
 	}
+	
+	/**
+	 * Adds a home item
+	 *
+	 * @param \Elgg\Hook $hook 'prepare', 'menu:breadcrumbs'
+	 *
+	 * @return \Elgg\Menu\MenuItems
+	 */
+	public static function addHomeItem(\Elgg\Hook $hook) {
+		
+		if (elgg_get_plugin_setting('add_home_item', 'breadcrumb_menu') === 'no') {
+			return;
+		}
+		
+		/* @var $return PreparedMenu */
+		$return = $hook->getValue();
+
+		/* @var $items \ElggMenuItem[] */
+		$items = $return->getItems('default');
+		if (empty($items)) {
+			return;
+		}
+		
+		array_unshift($items, \ElggMenuItem::factory([
+			'name' => 'breadcrumb_home',
+			'icon' => 'home',
+			'text' => false,
+			'href' => elgg_get_site_url(),
+		]));
+		
+		$return->getSection('default')->fill($items);
+		
+		return $return;
+	}
 }

@@ -1,6 +1,10 @@
 Version history
 ===============
 
+2.0 (2021-09-27):
+
+- changed: updated for Elgg 4
+
 1.0 (2019-03-27):
 
 - added: owner_block menu items to breadcrumb

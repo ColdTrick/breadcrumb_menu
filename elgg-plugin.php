@@ -19,6 +19,7 @@ return [
 		'prepare' => [
 			'menu:breadcrumbs' => [
 				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::removeLastItem' => [],
+				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::addHomeItem' => [],
 				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::trimBreadcrumbText' => [],
 				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::trimBreadcrumbText' => ['priority' => 9999],
 			],

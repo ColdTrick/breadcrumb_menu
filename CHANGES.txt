@@ -1,6 +1,10 @@
 Version history
 ===============
 
+2.0.1 (2021-10-12):
+
+- fixed: correctly add home item to breadcrumb menu
+
 2.0 (2021-09-27):
 
 - changed: updated for Elgg 4

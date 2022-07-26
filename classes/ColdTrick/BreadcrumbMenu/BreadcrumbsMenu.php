@@ -114,7 +114,7 @@ class BreadcrumbsMenu {
 		}
 		
 		if (!$remove_last_item && elgg_get_plugin_setting('remove_last_self_item', 'breadcrumb_menu') === 'yes') {
-			$current_page = current_page_url();
+			$current_page = elgg_get_current_url();
 			$menu_link = $last_item->getHref();
 			
 			if (!$last_item->getChildren() && elgg_http_url_is_identical($current_page, $menu_link)) {

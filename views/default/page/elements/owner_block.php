@@ -6,13 +6,9 @@
  * @uses $vars['show_owner_block'] (bool) Display owner block (default: true)
  * @uses $vars['show_owner_block_menu'] (bool) Show the owner_block menu for the current page owner (default: true)
  *
- * @package Elgg
- * @subpackage Core
- *
  * ColdTrick:
  * - don't show entity chip
  * - don't show menu
- * - only output module if content
  */
 
 if (!elgg_extract('show_owner_block', $vars, true)) {

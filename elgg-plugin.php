@@ -13,14 +13,14 @@ return [
 	'events' => [
 		'register' => [
 			'menu:breadcrumbs' => [
-				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::addOwnerBlockMenu' => [],
+				'ColdTrick\BreadcrumbMenu\Menus\Breadcrumbs::addOwnerBlockMenu' => [],
 			],
 		],
 		'prepare' => [
 			'menu:breadcrumbs' => [
-				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::removeLastItem' => [],
-				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::addHomeItem' => [],
-				'ColdTrick\BreadcrumbMenu\BreadcrumbsMenu::trimBreadcrumbText' => ['priority' => 9999],
+				'ColdTrick\BreadcrumbMenu\Menus\Breadcrumbs::removeLastItem' => [],
+				'ColdTrick\BreadcrumbMenu\Menus\Breadcrumbs::addHomeItem' => [],
+				'ColdTrick\BreadcrumbMenu\Menus\Breadcrumbs::trimBreadcrumbText' => ['priority' => 9999],
 				'Elgg\Menus\Breadcrumbs::cleanupBreadcrumbs' => ['unregister' => true],
 			],
 		],

@@ -1,6 +1,6 @@
 <?php
 
-namespace ColdTrick\BreadcrumbMenu;
+namespace ColdTrick\BreadcrumbMenu\Menus;
 
 use Elgg\Menu\MenuItems;
 use Elgg\Menu\PreparedMenu;
@@ -8,30 +8,29 @@ use Elgg\Menu\PreparedMenu;
 /**
  * Various breadcrumb menu related callbacks
  */
-class BreadcrumbsMenu {
+class Breadcrumbs {
 	
 	/**
 	 * Add the Owner_block menu to the breadcrumbs menu
 	 *
 	 * @param \Elgg\Event $event 'register', 'menu:breadcrumbs'
 	 *
-	 * @return void|MenuItems
+	 * @return null|MenuItems
 	 */
-	public static function addOwnerBlockMenu(\Elgg\Event $event) {
-		
+	public static function addOwnerBlockMenu(\Elgg\Event $event): ?MenuItems {
 		$page_owner = elgg_get_page_owner_entity();
 		if (!$page_owner instanceof \ElggUser && !$page_owner instanceof \ElggGroup) {
-			return;
+			return null;
 		}
 		
 		/* @var $return MenuItems */
 		$return = $event->getValue();
 		if (!$return->count()) {
-			return;
+			return null;
 		}
 		
 		if (elgg_get_plugin_setting('move_owner_block', 'breadcrumb_menu') === 'no') {
-			return;
+			return null;
 		}
 		
 		$owner_item = false;
@@ -54,7 +53,7 @@ class BreadcrumbsMenu {
 		}
 		
 		if (empty($owner_item)) {
-			return;
+			return null;
 		}
 		
 		$owner_block = elgg()->menus->getUnpreparedMenu('owner_block', [
@@ -62,7 +61,7 @@ class BreadcrumbsMenu {
 		]);
 		
 		if (!$owner_block->getItems()->count()) {
-			return;
+			return null;
 		}
 		
 		$owner_item->setData('child_menu', [
@@ -91,20 +90,19 @@ class BreadcrumbsMenu {
 	 *
 	 * @param \Elgg\Event $event 'prepare', 'menu:breadcrumbs'
 	 *
-	 * @return void|MenuItems
+	 * @return null|PreparedMenu
 	 */
-	public static function removeLastItem(\Elgg\Event $event) {
-		
+	public static function removeLastItem(\Elgg\Event $event): ?PreparedMenu {
 		/* @var $return PreparedMenu */
 		$return = $event->getValue();
 		if (!$return->count()) {
-			return;
+			return null;
 		}
 		
 		/* @var $items \ElggMenuItem[] */
 		$items = $return->getItems('default');
 		if (empty($items)) {
-			return;
+			return null;
 		}
 		
 		/* @var $last_item \ElggMenuItem */
@@ -128,7 +126,7 @@ class BreadcrumbsMenu {
 		}
 		
 		if (!$remove_last_item) {
-			return;
+			return null;
 		}
 		
 		array_pop($items);
@@ -149,8 +147,7 @@ class BreadcrumbsMenu {
 	 *
 	 * @return PreparedMenu
 	 */
-	public static function trimBreadcrumbText(\Elgg\Event $event) {
-		
+	public static function trimBreadcrumbText(\Elgg\Event $event): PreparedMenu {
 		/* @var $return PreparedMenu */
 		$return = $event->getValue();
 		
@@ -170,12 +167,11 @@ class BreadcrumbsMenu {
 	 *
 	 * @param \Elgg\Event $event 'prepare', 'menu:breadcrumbs'
 	 *
-	 * @return \Elgg\Menu\MenuItems
+	 * @return null|PreparedMenu
 	 */
-	public static function addHomeItem(\Elgg\Event $event) {
-		
+	public static function addHomeItem(\Elgg\Event $event): ?PreparedMenu {
 		if (elgg_get_plugin_setting('add_home_item', 'breadcrumb_menu') === 'no') {
-			return;
+			return null;
 		}
 		
 		/* @var $return PreparedMenu */
@@ -184,7 +180,7 @@ class BreadcrumbsMenu {
 		/* @var $items \ElggMenuItem[] */
 		$items = $return->getItems('default');
 		if (empty($items)) {
-			return;
+			return null;
 		}
 		
 		array_unshift($items, \ElggMenuItem::factory([

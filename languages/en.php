@@ -1,6 +1,8 @@
 <?php
 
 return [
+	// menus
+	'breadcrumb_menu:menu:home' => "Home",
 	
 	// plugin settings
 	'breadcrumb_menu:settings:move_owner_block' => "Move owner block menu items to breadcrumb",

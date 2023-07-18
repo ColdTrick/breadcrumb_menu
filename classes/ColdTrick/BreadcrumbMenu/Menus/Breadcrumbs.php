@@ -187,6 +187,7 @@ class Breadcrumbs {
 			'name' => 'breadcrumb_home',
 			'icon' => 'home',
 			'text' => false,
+			'title' => elgg_echo('breadcrumb_menu:menu:home'),
 			'href' => elgg_get_site_url(),
 		]));
 		

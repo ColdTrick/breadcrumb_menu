@@ -1,10 +1,11 @@
 <?php
 /**
- * This file was created by Translation Editor v11.1
- * On 2023-05-17 14:28
+ * This file was created by Translation Editor v12.0.1
+ * On 2023-07-19 06:38
  */
 
 return array (
+  'breadcrumb_menu:menu:home' => 'Startpagina',
   'breadcrumb_menu:settings:add_home_item' => 'Voeg een \'Home\' item toe aan het begin van het broodkruimelpad',
   'breadcrumb_menu:settings:move_owner_block' => 'Verplaats eigenaar menu items naar het kruimelpad',
   'breadcrumb_menu:settings:move_owner_block:help' => 'Indien ingeschakeld zal dit de menu items van de eigenaar verplaatsen van de zijbalk naar een dropdown in het kruimelpad.',

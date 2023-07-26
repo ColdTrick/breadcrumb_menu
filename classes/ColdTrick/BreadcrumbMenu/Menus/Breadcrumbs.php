@@ -109,14 +109,7 @@ class Breadcrumbs {
 		$last_item = end($items);
 		
 		$remove_last_item = false;
-		
-		if (!$remove_last_item && elgg_get_plugin_setting('remove_last_empty_item', 'breadcrumb_menu') === 'yes') {
-			if (!$last_item->getChildren() && elgg_is_empty($last_item->getHref())) {
-				$remove_last_item = true;
-			}
-		}
-		
-		if (!$remove_last_item && elgg_get_plugin_setting('remove_last_self_item', 'breadcrumb_menu') === 'yes') {
+		if (elgg_get_plugin_setting('remove_last_self_item', 'breadcrumb_menu') === 'yes') {
 			$current_page = elgg_get_current_url();
 			$menu_link = $last_item->getHref();
 			
@@ -135,28 +128,6 @@ class Breadcrumbs {
 			$return->getSection('default')->fill($items);
 		} else {
 			$return->remove('default');
-		}
-		
-		return $return;
-	}
-	
-	/**
-	 * Trim breadcrumb menu items to max length
-	 *
-	 * @param \Elgg\Event $event 'prepare', 'menu:breadcrumbs'
-	 *
-	 * @return PreparedMenu
-	 */
-	public static function trimBreadcrumbText(\Elgg\Event $event): PreparedMenu {
-		/* @var $return PreparedMenu */
-		$return = $event->getValue();
-		
-		/* @var $menu_section \Elgg\Menu\MenuSection */
-		foreach ($return as $menu_section) {
-			/* @var $menu_item \ElggMenuItem */
-			foreach ($menu_section as $memu_item) {
-				$memu_item->setText(elgg_get_excerpt($memu_item->getText(), 100));
-			}
 		}
 		
 		return $return;

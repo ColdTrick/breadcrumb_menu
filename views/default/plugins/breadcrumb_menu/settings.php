@@ -13,24 +13,3 @@ echo elgg_view_field([
 	'checked' => $plugin->move_owner_block === 'yes',
 	'switch' => true,
 ]);
-
-echo elgg_view_field([
-	'#type' => 'checkbox',
-	'#label' => elgg_echo('breadcrumb_menu:settings:remove_last_self_item'),
-	'#help' => elgg_echo('breadcrumb_menu:settings:remove_last_self_item:help'),
-	'name' => 'params[remove_last_self_item]',
-	'value' => 'yes',
-	'default' => 'no',
-	'checked' => $plugin->remove_last_self_item === 'yes',
-	'switch' => true,
-]);
-
-echo elgg_view_field([
-	'#type' => 'checkbox',
-	'#label' => elgg_echo('breadcrumb_menu:settings:add_home_item'),
-	'name' => 'params[add_home_item]',
-	'value' => 'yes',
-	'default' => 'no',
-	'checked' => $plugin->add_home_item === 'yes',
-	'switch' => true,
-]);

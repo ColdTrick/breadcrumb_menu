@@ -2,7 +2,7 @@
 
 return [
 	'plugin' => [
-		'version' => '4.0.1',
+		'version' => '5.0',
 	],
 	'settings' => [
 		'move_owner_block' => 'yes',

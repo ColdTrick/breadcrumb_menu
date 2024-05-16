@@ -1,6 +1,6 @@
 {
 	"name": "coldtrick/breadcrumb_menu",
-	"description": "Enchances the breadcrumb menu",
+	"description": "Moves the ownerblock menu items into the breadcrumb",
 	"homepage": "https://www.coldtrick.com",
 	"type": "elgg-plugin",
 	"keywords": ["elgg", "plugin", "menu", "navigation"],
@@ -10,6 +10,6 @@
 		"issues": "https://github.com/ColdTrick/breadcrumb_menu/issues"
 	},
 	"conflict": {
-		"elgg/elgg": "<5.1"
+		"elgg/elgg": "<6.0"
 	}
 }

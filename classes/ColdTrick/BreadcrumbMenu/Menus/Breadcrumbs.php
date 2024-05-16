@@ -3,7 +3,6 @@
 namespace ColdTrick\BreadcrumbMenu\Menus;
 
 use Elgg\Menu\MenuItems;
-use Elgg\Menu\PreparedMenu;
 
 /**
  * Various breadcrumb menu related callbacks
@@ -26,10 +25,6 @@ class Breadcrumbs {
 		/* @var $return MenuItems */
 		$return = $event->getValue();
 		if (!$return->count()) {
-			return null;
-		}
-		
-		if (elgg_get_plugin_setting('move_owner_block', 'breadcrumb_menu') === 'no') {
 			return null;
 		}
 		
@@ -56,9 +51,7 @@ class Breadcrumbs {
 			return null;
 		}
 		
-		$owner_block = elgg()->menus->getUnpreparedMenu('owner_block', [
-			'entity' => $page_owner,
-		]);
+		$owner_block = elgg()->menus->getUnpreparedMenu('owner_block', ['entity' => $page_owner]);
 		
 		if (!$owner_block->getItems()->count()) {
 			return null;
